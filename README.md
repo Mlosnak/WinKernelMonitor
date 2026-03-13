@@ -100,7 +100,3 @@ sc delete KmProcMon
 - Diagnostic output goes to `KmProcMon.log` and `OutputDebugString` (use DbgView)
 - Enable "Capture Kernel" in DbgView for driver-side `[KmProcMon]` messages
 - The driver is purely observational — it does not block or deny process creation
-
-## License
-
-See LICENSE file for details.
