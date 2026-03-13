@@ -1,0 +1,62 @@
+;
+; KernelMonitorDriver.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = System
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %ManufacturerName%
+CatalogFile = KernelMonitorDriver.cat
+DriverVer   =
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+KernelMonitorDriver.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName% = Standard,NT$ARCH$.10.0...16299 ; %13% support introduced in build 16299
+
+[Standard.NT$ARCH$.10.0...16299]
+%KernelMonitorDriver.DeviceDesc% = KernelMonitorDriver_Device, Root\KernelMonitorDriver
+
+[KernelMonitorDriver_Device.NT]
+CopyFiles = File_Copy
+
+[File_Copy]
+KernelMonitorDriver.sys
+
+;-------------- Service installation
+[KernelMonitorDriver_Device.NT.Services]
+AddService = KernelMonitorDriver,%SPSVCINST_ASSOCSERVICE%, KernelMonitorDriver_Service_Inst
+
+; -------------- KernelMonitorDriver driver install sections
+[KernelMonitorDriver_Service_Inst]
+DisplayName    = %KernelMonitorDriver.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\KernelMonitorDriver.sys
+
+[KernelMonitorDriver_Device.NT.Wdf]
+KmdfService = KernelMonitorDriver, KernelMonitorDriver_wdfsect
+
+[KernelMonitorDriver_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+ManufacturerName = "KmProcMon"
+DiskName = "Kernel Process Monitor Installation Disk"
+KernelMonitorDriver.DeviceDesc = "Kernel Process Monitor Driver"
+KernelMonitorDriver.SVCDESC = "Kernel Process Monitor Telemetry Service"

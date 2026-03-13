@@ -1,0 +1,11 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="../Kernel Monitor Driver/Kernel Monitor Driver.vcxproj">
+    <Platform Project="x64" />
+    <Deploy />
+  </Project>
+  <Project Path="Kernel Process Monitor.vcxproj" Id="cb0413b6-d9b3-46ef-8300-2190138c5026" />
+</Solution>
