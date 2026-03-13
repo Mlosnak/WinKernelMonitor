@@ -2,8 +2,10 @@
 
 Real-time process monitor for Windows built on a **kernel driver** (Ring 0) + **user-mode UI** (Ring 3) architecture. The driver hooks process/thread creation via kernel callbacks and streams telemetry to a DirectX 11 / ImGui dashboard that performs risk analysis, signature verification, and provides stealth controls.
 
-<!-- Add your screenshots here -->
-<!-- ![screenshot](screenshots/overview.png) -->
+<img width="1269" height="771" alt="kernel1" src="https://github.com/user-attachments/assets/f047d35a-d7b6-4ed3-ab71-5612d497d82b" />
+<img width="1270" height="773" alt="Kernel3" src="https://github.com/user-attachments/assets/3edb4527-a13e-44d4-9370-82c7981a20bc" />
+<img width="1264" height="766" alt="Kernel2" src="https://github.com/user-attachments/assets/a4fe81bd-46d2-451a-940f-f7e75217d51b" />
+
 
 ## Architecture
 
